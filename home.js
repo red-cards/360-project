@@ -1,5 +1,14 @@
 //Hover Y to show Z
+Pace.on('start', function() { 
+	$("#tirai").fadeIn(); // not 
+	
+});
 
+Pace.on('done', function() {
+	$("#tirai").fadeOut(); // fired!
+	document.querySelector("#tutorial").emit("hilang");
+	document.querySelector("#bgsound").components.sound.playSound();
+});
 AFRAME.registerComponent('event-proxy', {
   schema: {
     listen: {default: ''},
@@ -22,12 +31,12 @@ AFRAME.registerComponent('opendesc',{
 		var el = this.el;
 		el.addEventListener(data.on, function () {
 			if(data.on=="mouseenter"){
-				data.target.setAttribute("visible","true");
-				data.target.emit("menghilang");
+				data.target.emit("muncul");
 			}
 		});
 	}
 });
+
 AFRAME.registerComponent('set-image', {
   schema: {
     on: {type: 'string'},
@@ -40,20 +49,8 @@ AFRAME.registerComponent('set-image', {
     var data = this.data;
     var el = this.el;
 
-    //this.setupFadeAnimation();
-
     el.addEventListener(data.on, function () {
-      //alert(data.on);
-	  window.open(data.src,"_self");
-      
-      // Fade out image.
-      //data.target.emit('set-image-fade');
-      // Wait for fade to complete.
-      //setTimeout(function () {
-        // Set image.
-        //data.target.setAttribute('material', 'src', data.src);
-      //}, data.dur);
-    //});
+		window.open(data.src,"_self");
   });
   
 }});

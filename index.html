@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+	<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+	<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+	<script src="home.js"></script>
+  </head>
+  <body>
+    <a-scene>
+	<a-sound src="src: url(sound.mp3)" autoplay="true" position="0 2 5"></a-sound>
+      <a-assets>
+        <img id="background" crossorigin="anonymous" src="barat/bg.png"/>
+		<img id="descberuang" crossorigin="anonymous" src="beruangmadutext.png"/>
+		<img id="badak-thumb" crossorigin="anonymous" src="barat/badak.png"/>
+		<img id="gajah-thumb" crossorigin="anonymous" src="barat/gajah.png"/>
+		<img id="harimau-thumb" crossorigin="anonymous" src="barat/harimau.png"/>
+		<img id="kepel-thumb" crossorigin="anonymous" src="barat/kepel.png"/>
+		<img id="peti-thumb" crossorigin="anonymous" src="barat/peti.png"/>
+		<img id="rumput2-thumb" crossorigin="anonymous" src="barat/rumput2.png"/>
+		<img id="anggrek-thumb" crossorigin="anonymous" src="barat/anggrek.png"/>
+		<img id="bangkai-thumb" crossorigin="anonymous" src="barat/bangkai.png"/>
+		<img id="elang-thumb" crossorigin="anonymous" src="barat/elang.png"/>
+		<img id="kerbau-thumb" crossorigin="anonymous" src="barat/kerbau.png"/>
+		<img id="orangutan-thumb" crossorigin="anonymous" src="barat/orangutan.png"/>
+		<img id="anggrekberdiri-thumb" crossorigin="anonymous" src="barat/anggrekberdiri.png"/>
+		<img id="rumput1-thumb" crossorigin="anonymous" src="barat/rumput1.png"/>
+		<img id="beruang-thumb" crossorigin="anonymous" src="barat/beruang.png"/>
+		<img id="semakgajah-thumb" crossorigin="anonymous" src="barat/semakgajah.png"/>
+        
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+
+
+        <!-- Image link template to be reused. -->
+        <script id="obj" type="text/html">
+          <a-entity class="obj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+			event-set__3="_event: mouseenter; scale: 1.1 1.1 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+			opendesc="on:mouseenter;target:${target}"></a-entity>
+        </script>
+		<script id="sideobj" type="text/html">
+          <a-entity class="sideobj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb}"></a-entity>
+        </script>
+		<script id="descobj" type="text/html">
+          <a-entity class="descobj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      </a-assets>
+
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#background"></a-sky>
+
+      <!-- Image links. -->
+      <a-entity id="links" position="0 -1 -4">
+		<a-entity id="badak" template="src: #obj" data-height="1"; data-width="1" data-thumb="#badak-thumb" data-target="#descBadak" rotation="0 -137.51 0" position="5.98 -0.09 10.29" scale="10.08 7.23 5.72"></a-entity>
+		<a-entity id="gajah" template="src: #obj" data-height="1"; data-width="1" data-thumb="#gajah-thumb" data-target="#desB" rotation="0.00 0.00 0.00" position="0.15 1.13 -3.03" scale="4.55 3.97 2.08"></a-entity>
+		<a-entity id="harimau" template="src: #obj" data-height="1"; data-width="1" data-thumb="#harimau-thumb" data-target="#desB" rotation="0.00 -65.89 0.00" position="6.48 -2.20 0.88" scale="7.02 4.07 3.95"></a-entity>
+		<a-entity id="kepel" template="src: #obj" data-height="1"; data-width="1" data-thumb="#kepel-thumb" data-target="#desB" rotation="12.61 -65.32 5.73" position="7.65 3.95 -1.04" scale="1.29 1.24 1.00"></a-entity>
+		<a-entity id="peti" template="src: #obj" data-height="1"; data-width="1" data-thumb="#peti-thumb" data-target="#desB" rotation=" 0.00 140.95 0.00" position="-5.80 1.83 11.81" scale="1.00 1.00 1.00"></a-entity>
+		<a-entity id="semakgajah" template="src: #sideobj" data-height="1"; data-width="1" data-thumb="#semakgajah-thumb" data-target="#desB" rotation="0.00 -9.74 0.00" position="2.32 0.53 -2.69" scale="4.01 5.87 3.37"></a-entity>
+		<a-entity id="rumput2" template="src: #sideobj" data-height="1"; data-width="1" data-thumb="#rumput2-thumb" data-target="#desB" rotation=" 0.00 60.16 0.00" position="-6.10 0.16 0.62" scale="31.09 22.34 18.10"></a-entity>
+		<a-entity id="anggrek" template="src: #obj" data-height="1"; data-width="1" data-thumb="#anggrek-thumb" data-target="#desB" rotation=" 0.00 -5.16 0.00" position="1.36 3.60 -4.54" scale="0.78 0.78 0.78"></a-entity>
+		<a-entity id="bangkai" template="src: #obj" data-height="1"; data-width="1" data-thumb="#bangkai-thumb" data-target="#desB" rotation=" 0.00 164.44 0.00" position="-4.95 0.84 11.91" scale="2.99 2.34 2.34"></a-entity>
+		<a-entity id="elang" template="src: #obj" data-height="1"; data-width="1" data-thumb="#elang-thumb" data-target="#desB" rotation=" 0.00 -137.51 0.00" position="5.43 2.55 9.91" scale="1.43 2.05 1.24"></a-entity>
+		<a-entity id="kerbau" template="src: #obj" data-height="1"; data-width="1" data-thumb="#kerbau-thumb" data-target="#desB" rotation=" -2.86 111.73 0.00" position="-8.23 0.45 7.27" scale="6.45 5.84 5.73"></a-entity>
+		<a-entity id="orangutan" template="src: #obj" data-height="1"; data-width="1" data-thumb="#orangutan-thumb" data-target="#desB" rotation=" 0.00 -23.49 0.00" position=" 3.92 4.96 -3.81" scale="2.63 2.63 2.63"></a-entity>
+		<a-entity id="anggrekberdiri" template="src: #obj" data-height="1"; data-width="1" data-thumb="#anggrekberdiri-thumb" data-target="#desB" rotation=" 0.00 87.66 0.00" position="-7.99 -0.28 3.81" scale="3.82 3.82 3.82"></a-entity>
+		<a-entity id="rumput1" template="src: #sideobj" data-height="1"; data-width="1" data-thumb="#rumput1-thumb" data-target="#desB" rotation=" 0.00 101.41 0.00" position=" -7.50 -2.50 5.20" scale="10.00 5.90 5.90"></a-entity>
+		<a-entity id="beruang" template="src: #obj" data-height="1"; data-width="1" data-thumb="#beruang-thumb" data-target="#desB" rotation="0.00 61.31 0.00" position="-6.99 0.53 0.57" scale="4.33 6.32 7.15"></a-entity>
+        <a-entity id="descBadak" template="src: #descobj" data-height="1"; data-src="https://www.google.com" data-width="1" data-src="#city" data-thumb="#descberuang" visible="false" position>
+			<a-animation attribute="visible" begin="menghilang"	delay="5000" to="false" repeat="1"></a-animation>
+		</a-entity>
+      
+      </a-entity>
+      
+      
+      
+      
+      <!-- Camera + cursor. -->
+      <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: #ffcc56"
+          event-set__2="_event: mouseleave; color: #F9BF3B"
+          raycaster="objects: .obj,.descobj"></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
+
