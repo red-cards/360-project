@@ -1,14 +1,5 @@
 //Hover Y to show Z
-Pace.on('start', function() { 
-	$("#tirai").fadeIn(); // not 
-	
-});
 
-Pace.on('done', function() {
-	$("#tirai").fadeOut(); // fired!
-	document.querySelector("#tutorial").emit("hilang");
-	document.querySelector("#bgsound").components.sound.playSound();
-});
 AFRAME.registerComponent('event-proxy', {
   schema: {
     listen: {default: ''},

@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <link rel="icon" href="favicon.png">
+    <meta charset="utf-8">
+    <title>360&deg; Indonesia Kehati</title>
+    <meta name="description" content="360&deg; Jelajah Keanekaragaman Hayati Indonesia">
+	<script src="pace.min.js"></script>
+	<link rel="stylesheet" href="pace.css" />
+	<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+	<script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+  <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+	<script src="home.js"></script>
+  </head>
+  <body>
+  <a-scene>
+	<a-sound src="src: url(timur.mp3)" autoplay="true" loop="true" position="0 2 5"></a-sound>
+    
+    
+    <a-assets>
+    <img id="background" crossorigin="anonymous" src="http://i.imgur.com/cWg7Jtt.jpg"/>
+    <img id="cendrawasih-thumb" crossorigin="anonymous" src="http://i.imgur.com/jC9Q2h4.png"/>
+    <img id="buahmerah-thumb" crossorigin="anonymous" src="http://i.imgur.com/6kPwJ68.png"/>
+    <img id="matoa-thumb" crossorigin="anonymous" src="http://i.imgur.com/aWy4lIs.png"/>
+		<img id="wallaby-thumb" crossorigin="anonymous" src="http://i.imgur.com/5PxavSt.png"/>
+		<img id="pohonmerah-thumb" crossorigin="anonymous" src="http://i.imgur.com/EDbgZu7.png"/>
+		<img id="kuskus-thumb" crossorigin="anonymous" src="http://i.imgur.com/LzzrYOd.png"/>
+		<img id="batualam-thumb" crossorigin="anonymous" src="http://i.imgur.com/RNJcvP5.png"/>
+		    
+		<img id="cendrawasih-desc" crossorigin="anonymous" src="http://i.imgur.com/IEx3bHD.png"/>
+		<img id="buahmerah-desc" crossorigin="anonymous" src="http://i.imgur.com/FrjdgMI.png"/>
+		<img id="matoa-desc" crossorigin="anonymous" src="http://i.imgur.com/BIyLDY5.png"/>
+		<img id="wallaby-desc" crossorigin="anonymous" src="http://i.imgur.com/tDYV1MG.png"/>
+		<img id="kuskus-desc" crossorigin="anonymous" src="http://i.imgur.com/gjXMIhI.png"/>
+						
+    <img id="peti-thumb" crossorigin="anonymous" src="http://i.imgur.com/n3ETx60.png"/>
+    <img id="peti-desc" crossorigin="anonymous" src="http://i.imgur.com/dp3m8wv.png"/>
+		<img id="kembali" crossorigin="anonymous" src="http://i.imgur.com/79vNg3W.png"/>
+		<img id="sabda" crossorigin="anonymous" src="http://i.imgur.com/v5FZ5ib.png"/>
+		
+        <audio id="click-sound" crossorigin="anonymous" src="timur/click.ogg"></audio>
+
+        <script id="obj" type="text/html">
+          <a-entity class="obj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb};side: double"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+			event-set__3="_event: mouseenter; scale: 1.1 1.1 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+			opendesc="on:mouseenter;target:${target}"></a-entity>
+        </script>
+		<script id="sideobj" type="text/html">
+          <a-entity class="sideobj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb};side: double"></a-entity>
+        </script>
+		<script id="peta" type="text/html">
+          <a-entity class="peta"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb};side: double"
+			set-image="on: click; target: #image-360; src: ${src}"
+			></a-entity>
+        </script>
+		<script id="peta-hvr" type="text/html">
+          <a-entity class="peta-hvr"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb};side: double"
+			event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+			sound="on: click; src: #click-sound"
+			></a-entity>
+        </script>
+		<script id="descobj" type="text/html">
+          <a-entity class="descobj"
+            geometry="primitive: plane;height:${height};width:${width}"
+            material="shader: flat;transparent:true; src: ${thumb};side: double"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      </a-assets>
+
+      <a-sky id="image-360" radius="10" src="#background"></a-sky>
+      <a-entity id="links" position="0 -1 -4">
+       
+		<a-entity id="cendrawasih" template="src: #obj" data-height="1"; data-width="1" data-thumb="#cendrawasih-thumb" data-target="#cendrawasihDesc" rotation="39.935 -1.604 4.068" position="-1.728 7.386 -2.838" scale="3.770 3.550 3.131"></a-entity>
+		<a-entity id="pohonmerah" template="src: #sideobj" data-height="1"; data-width="1" data-thumb="#pohonmerah-thumb"  data-target="#pohonmerahDesc" rotation="-2.292 -14.439 -0.917" position="2.385 0.606 -2.848" scale="10.933 8.074 3.071"></a-entity>
+    <a-entity id="buahmerah" template="src: #obj" data-height="1"; data-width="1" data-thumb="#buahmerah-thumb" data-target="#buahmerahDesc" rotation="-0.630 -22.002 5.386" position="2.795 -0.123 -2.430" scale="1.712 1.562 1.562"></a-entity>
+		<a-entity id="matoa" template="src: #obj" data-height="1"; data-width="1" data-thumb="#matoa-thumb" data-target="#matoaDesc" position="2.230 2.499 12.404" rotation="1.547 13.866 4.412" scale= "4.026 6.402 2.362"></a-entity>
+		<a-entity id="wallaby" template="src: #obj" data-height="1"; data-width="1" data-thumb="#wallaby-thumb" data-target="#wallabyDesc" rotation="0 104.622 0" position="-8.350 1.325 7.911" scale="2.327 3.606 1.459"></a-entity>
+		<a-entity id="peti" template="src: #obj" data-height="1"; data-width="1" data-thumb="#peti-thumb" data-target="#petiDesc" rotation="0 94.070 0" position="-8.359 -3.857 2.087" scale="1.00 1.00 1.00"></a-entity>
+		
+		<a-entity id="kuskus" template="src: #obj" data-height="1"; data-width="1" data-thumb="#kuskus-thumb" data-target="#kuskusDesc" rotation="38.617 163.121 -5.787" position="-1.117 6.844 11.443" scale="1.335 2.534 1.121"></a-entity>
+		
+        
+        
+		<a-entity id="batualam" template="src: #sideobj" data-height="1"; data-width="1" data-thumb="#batualam-thumb" data-target="#desB" position="-7.080 -2.035 6.765" rotation= "0.344 121.295 -2.807" scale="5.545 5.477 3.129"></a-entity>
+        
+      <a-entity id="cendrawasihDesc" template="src: #descobj" data-height="1"; data-src="https://indonesiakehati.com/index.php/Page/ensiklopedia_detail/54" data-width="2" data-src="#city" data-thumb="#cendrawasih-desc" position="3.72 15.39 5.50" rotation = "18.048 30.070 12.720" scale="1.5 1.5 1.5">
+			<a-animation attribute="position" begin="muncul" dur="0" to="-2.951 6.675 -1.339" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="muncul" dur="0" delay="3000" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		<a-entity id="buahmerahDesc" template="src: #descobj" data-height="1"; data-src="https://indonesiakehati.com/index.php/page/ensiklopedia_detail/71" data-width="2" data-src="#city" data-thumb="#buahmerah-desc" position= "3.72 15.39 5.50" rotation = "0.172 2.063 -1.604" scale="1.5 1.5 1.5">
+			<a-animation attribute="position" begin="muncul" dur="0" to="0.371 0.000 -2.154" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="muncul" dur="0" delay="3000" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		<a-entity id="matoaDesc" template="src: #descobj" data-height="1"; data-src="https://indonesiakehati.com/index.php/Page/ensiklopedia_detail/73" data-width="2" data-src="#city" data-thumb="#matoa-desc" position= "3.72 15.39 5.50" rotation= "0.000 -165.298 -0.401" scale="1.5 1.5 1.5">
+			<a-animation attribute="position" begin="muncul" dur="0" to="1.820 1.260 10.887" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="muncul" dur="0" delay="3000" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		<a-entity id="wallabyDesc" template="src: #descobj" data-height="1"; data-src="https://indonesiakehati.com/index.php/page/ensiklopedia_detail/56" data-width="2" data-src="#city" data-thumb="#wallaby-desc" position= "3.72 15.39 5.50" rotation= "0 103.648 0" scale="1.5 1.5 1.5">
+			<a-animation attribute="position" begin="muncul" dur="0" to="-8.075 1.705 5.247" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="muncul" dur="0" delay="3000" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		<a-entity id="petiDesc" template="src: #descobj" data-height="1"; data-src="https://www.google.com" data-width="2" data-src="#city" data-thumb="#peti-desc" position= "3.72 15.39 5.50" rotation= "0 80.386 0 " scale="1.158 1.494 0.094" >
+			<a-animation attribute="position" begin="muncul" dur="0" to="-8.240 -3.636 2.162" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="mouseleave" dur="0" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		<a-entity id="kuskusDesc" template="src: #descobj" data-height="1"; data-src=" https://indonesiakehati.com/index.php/page/ensiklopedia_detail/57" data-width="2" data-src="#city" data-thumb="#kuskus-desc" position="3.72 15.39 5.50" rotation= "41.998 167.361 -8.079" scale="1.5 1.5 1.5">
+			<a-animation attribute="position" begin="muncul" dur="0" to="-2.016 7.166 10.732" repeat="0"></a-animation>
+			<a-animation attribute="position" begin="muncul" dur="0" delay="3000" to="3.72 15.39 5.50" repeat="0"></a-animation>
+		</a-entity>
+		
+		<a-entity id="kembali" template="src: #descobj" data-height="1"; data-src="https://indonesiakehati.com/index.php/Page/jelajah" data-width="2" data-src="#city" 
+		data-thumb="#kembali" position= "4.178 -2.115 5.730" rotation= "-48.128 -1915.914 0.000" scale="0.631 0.368 0.599">
+		</a-entity>
+		
+		
+		
+      </a-entity>
+      <a-entity camera look-controls rotation="0 -104.909 0">
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: #ffcc56"
+          event-set__2="_event: mouseleave; color: #F9BF3B"
+          raycaster="objects: .obj,.descobj,.peta,.peta-hvr"></a-cursor>
+          
+          
+          <a-entity
+		geometry="primitive: plane;height:1;width:1"
+		material="shader: flat;transparent:true; src: http://i.imgur.com/v5FZ5ib.png;"
+		position="-0.010 0.087 -0.775" scale="0.540 0.510 1">
+      <a-animation attribute="material.opacity" begin="10000" dur="2000" delay="0" to="0" repeat="0" ease="ease-in-out"></a-animation>
+		
+		</a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
